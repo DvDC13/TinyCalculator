@@ -1,5 +1,6 @@
 %{
     #include <stdio.h>
+    #include <stdlib.h>
 %}
 
 /* declare tokens */
@@ -21,7 +22,7 @@ exp: factor
 
 factor: term
     | factor MUL term { $$ = $1 * $3; }
-    | factor DIV term { $$ = $1 / $3; }
+    | factor DIV term { if ($3 == 0) { yyerror("Can not divide by zero"); exit(1); } else $$ = $1 / $3; }
     ;
 
 term: NUMBER
@@ -35,7 +36,7 @@ int main(int argc, char **argv)
     yyparse();
 }
 
-void yyerror(char *s)
+void yyerror(const char *s)
 {
     fprintf(stderr, "error: %s\n", s);
 }

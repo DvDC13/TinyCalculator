@@ -1,3 +1,4 @@
+/* Stop the error "undefined reference to 'yywrap'" from Flex */
 %option noyywrap
 
 %{
