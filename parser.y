@@ -2,6 +2,9 @@
     #include <stdio.h>
     #include <stdlib.h>
     #include <math.h>
+
+    int yylex();
+    void yyerror(const char *s);
 %}
 
 /* declare tokens */
@@ -27,12 +30,13 @@ factor: term
     ;
 
 term: realnum
-    | ABS term { $$ = abs($2); }
+    | ABS exp ABS { $$ = abs($2); }
     | LPAREN exp RPAREN { $$ = $2; }
     ;
 
 realnum: NUMBER { $$ = $1; }
     | SUB realnum %prec UMINUS { $$ = -$2; }
+    ;
 
 %%
 

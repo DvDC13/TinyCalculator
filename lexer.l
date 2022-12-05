@@ -16,7 +16,7 @@
 "("               { return LPAREN; }
 ")"               { return RPAREN; }
 "|"               { return ABS; }
-[0-9]+            { yylval = atoi(yytext); return NUMBER; }
+\d+([.,]\d*)?     { yylval = atof(yytext); return NUMBER; }
 [\n]              { return EOL; }
 [ \t]             { /* ignore whitespace */ }
 .                 { printf("Illegal character '%c'", yytext[0]); return 0; }
