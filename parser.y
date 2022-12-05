@@ -1,11 +1,12 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
+    #include <math.h>
 %}
 
 /* declare tokens */
 %token NUMBER
-%token ADD SUB MUL DIV
+%token ADD SUB MUL DIV ABS
 %token LPAREN RPAREN
 %token EOL
 
@@ -25,9 +26,13 @@ factor: term
     | factor DIV term { if ($3 == 0) { yyerror("Can not divide by zero"); exit(1); } else $$ = $1 / $3; }
     ;
 
-term: NUMBER
+term: realnum
+    | ABS term { $$ = abs($2); }
     | LPAREN exp RPAREN { $$ = $2; }
     ;
+
+realnum: NUMBER { $$ = $1; }
+    | SUB realnum %prec UMINUS { $$ = -$2; }
 
 %%
 
