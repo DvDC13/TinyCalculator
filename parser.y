@@ -5,6 +5,7 @@
 /* declare tokens */
 %token NUMBER
 %token ADD SUB MUL DIV
+%token LPAREN RPAREN
 %token EOL
 
 %%
@@ -24,6 +25,7 @@ factor: term
     ;
 
 term: NUMBER
+    | LPAREN exp RPAREN { $$ = $2; }
     ;
 
 %%

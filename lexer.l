@@ -9,6 +9,8 @@
 "-"     { return SUB; }
 "*"     { return MUL; }
 "/"     { return DIV; }
+"("     { return LPAREN; }
+")"     { return RPAREN; }
 [0-9]+  { yylval = atoi(yytext); return NUMBER; }
 \n      { return EOL; }
 [ \t]   { /* ignore whitespace */ }
