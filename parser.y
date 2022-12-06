@@ -1,35 +1,49 @@
 %{
     #include <stdio.h>
     #include <stdlib.h>
+    #include <string.h>
     #include <math.h>
+
+    #include "parser.tab.h"
 
     int yylex();
     void yyerror(const char *s);
+
+    extern FILE *yyin;
 %}
 
+%start calculator
+
+%union {
+    int number;
+    char *string;
+};
+
 /* declare tokens */
-%token NUMBER
+%token <number> NUMBER
 %token ADD SUB MUL DIV ABS
 %token LPAREN RPAREN
 %token EOL
 
+%type <number> calculator exp term factor realnum
+
 %%
 
-calclist: /* nothing */
-    | calclist exp EOL { printf("The result is %d\n", $2); }
+calculator: { $$ = 0; }
+    | calculator exp EOL { printf("The result is %d\n", $2); }
     ;
 
-exp: factor
+exp: factor { $$ = $1; }
     | exp ADD factor { $$ = $1 + $3; }
     | exp SUB factor { $$ = $1 - $3; }
     ;
 
-factor: term
+factor: term { $$ = $1; }
     | factor MUL term { $$ = $1 * $3; }
     | factor DIV term { if ($3 == 0) { yyerror("Can not divide by zero"); exit(1); } else $$ = $1 / $3; }
     ;
 
-term: realnum
+term: realnum { $$ = $1; }
     | ABS exp ABS { $$ = abs($2); }
     | LPAREN exp RPAREN { $$ = $2; }
     ;
@@ -40,11 +54,19 @@ realnum: NUMBER { $$ = $1; }
 
 %%
 
+/* main function */
 int main(int argc, char **argv)
 {
+    if (argc > 1)
+        yyin = fopen(argv[1],"rt");
+    else
+        yyin = stdin;
+    printf("-> ");
     yyparse();
+    return 0;
 }
 
+/* error function */
 void yyerror(const char *s)
 {
     fprintf(stderr, "error: %s\n", s);

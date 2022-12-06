@@ -9,15 +9,15 @@
 %}
 
 %%
-"+"               { return ADD; }
-"-"               { return SUB; }
-"*"               { return MUL; }
-"/"               { return DIV; }
-"("               { return LPAREN; }
-")"               { return RPAREN; }
-"|"               { return ABS; }
-\d+([.,]\d*)?     { yylval = atof(yytext); return NUMBER; }
-[\n]              { return EOL; }
-[ \t]             { /* ignore whitespace */ }
-.                 { printf("Illegal character '%c'", yytext[0]); return 0; }
+[0-9]+                  { yylval.number = atoi(yytext); return NUMBER;}
+"+"                     { return ADD; }
+"-"                     { return SUB; }
+"*"                     { return MUL; }
+"/"                     { return DIV; }
+"("                     { return LPAREN; }
+")"                     { return RPAREN; }
+"|"                     { return ABS; }
+[\n]                    { return EOL; }
+[ \t]+                  { /* ignore whitespace */ }
+.                       { printf("Illegal character '%c'", yytext[0]); return 0; }
 %%
