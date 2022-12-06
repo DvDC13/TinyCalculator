@@ -1,6 +1,6 @@
 # TinyCalculator
 
-TinyCalculator is a little scientific calculator using Bison & Flex.
+TinyCalculator is a small scientific calculator using Bison & Flex.
 
 ## Functionality
 
@@ -16,7 +16,16 @@ TinyCalculator is a little scientific calculator using Bison & Flex.
 - gcc compiler
 - make (If you want to use the makefile, otherwise you can use the exec.sh script)
 
-## Example
+## How to use
+./TinyCalculator [file]
+Warning: When using a file, do not forget to add a return to line at the end!
+
+- 1 + 1
+-> The result is 2.00
+- 2 + -7
+-> The result is -5.00
+- 3 * ( 1.2 * 4 )
+-> The result is 14.40
 
 ## Compile and Run
 
