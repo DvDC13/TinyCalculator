@@ -17,8 +17,8 @@ TinyCalculator is a small scientific calculator using Bison & Flex.
 - make (If you want to use the makefile, otherwise you can use the exec.sh script)
 
 ## How to use
-./TinyCalculator [file]
-Warning: When using a file, do not forget to add a return to line at the end!
+- ./TinyCalculator [file]
+- Warning: When using a file, do not forget to add a return to line at the end!
 
 - 1 + 1
 -> The result is 2.00
