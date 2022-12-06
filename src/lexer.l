@@ -17,6 +17,7 @@
 "("                     { return LPAREN; }
 ")"                     { return RPAREN; }
 "|"                     { return ABS; }
+"exit"|"EXIT"           { return EXIT; }
 [\n]                    { return EOL; }
 [ \t]+                  { /* ignore whitespace */ }
 .                       { printf("Illegal character '%c'", yytext[0]); return 0; }

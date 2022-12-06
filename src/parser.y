@@ -22,6 +22,7 @@
 %token <number> NUMBER
 %token ADD SUB MUL DIV ABS
 %token LPAREN RPAREN
+%token EXIT
 %token EOL
 
 %type <number> calculator exp term factor realnum
@@ -29,6 +30,7 @@
 %%
 
 calculator: { $$ = 0; }
+    | calculator EXIT { exit(0); }
     | calculator exp EOL { printf("The result is %.2f\n", $2); }
     ;
 
