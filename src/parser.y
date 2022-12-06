@@ -16,7 +16,6 @@
 
 %union {
     double number;
-    char *string;
 };
 
 /* declare tokens */
