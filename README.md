@@ -26,6 +26,7 @@ TinyCalculator is a small scientific calculator using Bison & Flex.
 -> The result is -5.00
 - 3 * ( 1.2 * 4 )
 -> The result is 14.40
+- exit (or EXIT) to quit the program.
 
 ## Compile and Run
 
