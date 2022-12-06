@@ -1,6 +1,6 @@
 # TinyCalculator
 
-TinyCalculator is a scientific calculator using Bison & Flex.
+TinyCalculator is a little scientific calculator using Bison & Flex.
 
 ## Functionality
 
