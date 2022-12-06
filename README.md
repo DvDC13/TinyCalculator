@@ -20,11 +20,11 @@ TinyCalculator is a small scientific calculator using Bison & Flex.
 ./TinyCalculator [file]
 Warning: When using a file, do not forget to add a return to line at the end!
 
-1 + 1
+- 1 + 1
 -> The result is 2.00
-2 + -7
+- 2 + -7
 -> The result is -5.00
-3 * ( 1.2 * 4 )
+- 3 * ( 1.2 * 4 )
 -> The result is 14.40
 
 ## Compile and Run
