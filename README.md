@@ -23,4 +23,4 @@ TinyCalculator is a little scientific calculator using Bison & Flex.
 - bison -d src/parser.y
 - flex src/lexer.l
 - cc -o TinyCalculator src/main.c lex.yy.c parser.tab.c
-- ./TinyCalculator.exe
+- ./TinyCalculator.exe [file]
