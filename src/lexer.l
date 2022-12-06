@@ -9,7 +9,7 @@
 %}
 
 %%
-[0-9]+                  { yylval.number = atoi(yytext); return NUMBER;}
+[0-9]+([.,][0-9]*)?     { yylval.number = atof(yytext); return NUMBER;}
 "+"                     { return ADD; }
 "-"                     { return SUB; }
 "*"                     { return MUL; }

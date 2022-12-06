@@ -15,7 +15,7 @@
 %start calculator
 
 %union {
-    int number;
+    double number;
     char *string;
 };
 
@@ -30,7 +30,7 @@
 %%
 
 calculator: { $$ = 0; }
-    | calculator exp EOL { printf("The result is %d\n", $2); }
+    | calculator exp EOL { printf("The result is %.2f\n", $2); }
     ;
 
 exp: factor { $$ = $1; }
